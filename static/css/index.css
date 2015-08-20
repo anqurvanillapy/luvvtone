@@ -1,0 +1,18 @@
+body {
+    margin: 0px;
+}
+
+h2 {
+    margin-top: 0px;
+    font-size: 40px;
+    font-family: Georgia, 'Times New Roman', helvetica;
+    color: #F9AB69;
+    text-align: center;
+}
+
+#day-counter {
+    margin-top: 20px;
+    font-size: 72px;
+    font-family: 'Times New Roman', helvetica;
+    text-align: center;
+}
