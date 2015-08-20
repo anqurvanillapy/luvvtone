@@ -4,10 +4,9 @@ body {
 
 h2 {
     margin-top: 0px;
-    font-size: 40px;
+    font-size: 36px;
     font-family: Georgia, 'Times New Roman', helvetica;
     color: #F9AB69;
-    text-align: center;
 }
 
 #day-counter {
