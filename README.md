@@ -1,4 +1,7 @@
-luvvtone
-========
+# Luvvtone
 
-A cute day counter for my territory <3
+A cute countdown app for my territory <3
+
+# License
+
+ISC
