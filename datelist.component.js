@@ -1,23 +1,39 @@
 import React, { Component } from 'react'
-import { Text, ListView } from 'react-native'
+import { View, Text, ListView, AsyncStorage } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 class DateListItem extends Component {
   constructor (props) {
     super()
     this.state = props
+
+    // Styles.
+    this.containerStyle = {
+      padding: 20,
+      flexDirection: 'row',
+      borderBottomWidth: 1,
+      borderColor: '#eee'
+    }
+    this.textStyle = {
+      fontSize: 20
+    }
   }
 
   render () {
     return (
-      <Text
-        onPress={_ => {
-          this.setState(prevState => {
-            return {id: prevState.id, data: 'clicked!'}
-          })
-        }}
-      >
-        {this.state.data}
-      </Text>
+      <View style={this.containerStyle}>
+        <Icon name='md-home' size={20} style={{margin: 5}} />
+        <Text
+          style={this.textStyle}
+          onPress={_ => {
+            this.setState(prevState => {
+              return {id: prevState.id, data: 'clicked!'}
+            })
+          }}
+        >
+          {this.state.data}
+        </Text>
+      </View>
     )
   }
 }
@@ -25,26 +41,38 @@ class DateListItem extends Component {
 export default class DateList extends Component {
   constructor () {
     super()
-    const ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 })
-    this.state = {
-      dataSrc: ds.cloneWithRows([
-        { id: 0, data: 'row 1' },
-        { id: 1, data: 'row 2' }
-      ])
-    }
+
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2})
+    this.state = { datelist: [] }
+
+    AsyncStorage.getItem('list').then(val => {
+      this.setState(prevState => {
+        return { datelist: JSON.parse(val) }
+      })
+    }).catch(_ => { /* nop */ })
   }
 
   render () {
-    return (
-      <ListView
-        dataSource={this.state.dataSrc}
-        renderRow={row =>
-          <DateListItem
-            id={row.id}
-            data={row.data}
-          />
-        }
-      />
-    )
+    const ls = this.state.datelist
+
+    if (ls.length) {
+      return (
+        <ListView
+          dataSource={this.ds.cloneWithRows(ls)}
+          renderRow={row =>
+            <DateListItem
+              id={row.id}
+              data={row.data}
+            />
+          }
+        />
+      )
+    } else {
+      return (
+        <View style={{margin: 10}}>
+          <Text>还没有记录喔~</Text>
+        </View>
+      )
+    }
   }
 }

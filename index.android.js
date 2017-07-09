@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { AppRegistry, View } from 'react-native'
+import { AppRegistry, AsyncStorage, View } from 'react-native'
 
 import Header from './header.component'
 import DateList from './datelist.component'
