@@ -8,23 +8,25 @@ class DateListItem extends Component {
     this.state = props
 
     // Styles.
-    this.containerStyle = {
-      padding: 20,
-      flexDirection: 'row',
-      borderBottomWidth: 1,
-      borderColor: '#eee'
-    }
-    this.textStyle = {
-      fontSize: 20
+    this.style = {
+      container: {
+        padding: 20,
+        flexDirection: 'row',
+        borderBottomWidth: 1,
+        borderColor: '#eee'
+      },
+      text: {
+        fontSize: 20
+      }
     }
   }
 
   render () {
     return (
-      <View style={this.containerStyle}>
+      <View style={this.style.container}>
         <Icon name='md-home' size={20} style={{margin: 5}} />
         <Text
-          style={this.textStyle}
+          style={this.style.text}
           onPress={_ => {
             this.setState(prevState => {
               return {id: prevState.id, data: 'clicked!'}
