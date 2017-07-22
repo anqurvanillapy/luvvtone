@@ -1,7 +1,7 @@
 {
   "name": "luvvtone",
   "version": "1.0.0",
-  "description": "Minimal countdown app",
+  "description": "Minimal date management app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +11,8 @@
     "url": "git+https://github.com/anqurvanillapy/luvvtone.git"
   },
   "keywords": [
-    "countdown",
-    "react-native"
+    "date-management",
+    "service-worker"
   ],
   "author": "AnqurVanillapy",
   "license": "ISC",
@@ -20,5 +20,8 @@
     "url": "https://github.com/anqurvanillapy/luvvtone/issues"
   },
   "homepage": "https://github.com/anqurvanillapy/luvvtone#readme",
-  "dependencies": {}
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^3.3.0"
+  }
 }

@@ -4,39 +4,51 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="initial-scale=1">
-  <meta name="description" content="A countdown app for my territory">
+  <meta name="description" content="Date management app for my territory">
   <meta name="author" content="AnqurVanillapy">
   <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css">
-  <title>大小姐的倒计时</title>
+  <title>大小姐的小时钟</title>
 </head>
 <body>
 
 <header>
-  <h1>大小姐的倒计时</h1>
-  <button>=</button>
+  <h1>大小姐的小时钟</h1>
+  <button id="header__about">?</button>
 </header>
 
 <main>
-  <ul>
-    <li>
-      <section>
-        <h1>Item1</h1>
-      </section>
-    </li>
-  </ul>
+  <ul id="datelist"></ul>
 </main>
 
-<aside id="btn-add">
+<aside id="add-btn">
   <span>&plus;</span>
 </aside>
 
-<script>
-if (!('serviceWorker' in navigator)) {
-  document.write('Sorry, Service Worker is not supported in your browser.')
-}
-</script>
-<script src="sw.js"></script>
+<aside id="date-modal">
+  <div id="date-dialog">
+    <p id="date-dialog__title">添加日期</p>
+
+    <form id="date-form">
+      <input id="input-date" name="input-date" type="date">
+
+      备注 <input id="input-title" name="input-title" type="text">
+
+      <input id="input-anniversary" type="radio" name="input-type" value="an">
+      <label for="input-anniversary">纪念日</label>
+      <input id="input-countdown" type="radio" name="input-type" value="cd">
+      <label for="input-countdown">倒计时</label>
+
+      <p id="date-dialog__errmsg"></p>
+    </form>
+
+    <div id="date-dialog__btn-groups">
+      <button id="dialog-add-btn" type="button">添加</button>
+      <button id="dialog-cancel-btn" type="button">取消</button>
+    </div>
+  </div>
+</aside>
+
 <script src="app.js"></script>
 </body>
 </html>
